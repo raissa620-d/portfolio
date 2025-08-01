@@ -28,14 +28,17 @@ window.addEventListener('resize', () => {
     menu.classList.remove('open');
   }
 });
+
+// Carrousel Responsive
 const projets = document.querySelectorAll('.projet');
 let currentIndex = 0;
 const delay = 3000; // Durée d'affichage de chaque projet en ms
 
 function showProjet(index) {
   projets.forEach((proj, i) => {
-    proj.style.display = i === index ? 'block' : 'none';
+    proj.style.display = 'none';
   });
+  projets[index].style.display = 'block';
 }
 
 function nextProjet() {
@@ -43,8 +46,17 @@ function nextProjet() {
   showProjet(currentIndex);
 }
 
-// Initialisation : affiche le premier projet
-showProjet(currentIndex);
+function initSlider() {
+  if (window.innerWidth <= 900) {
+    showProjet(currentIndex);
+    setInterval(nextProjet, delay);
+  } else {
+    projets.forEach(p => p.style.display = 'block');
+  }
+}
 
-// Change de projet toutes les X ms
-setInterval(nextProjet, delay);
+initSlider();
+
+window.addEventListener('resize', () => {
+  initSlider();
+});

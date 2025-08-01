@@ -69,8 +69,8 @@ p {
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 }
 
 /* --- Menu hamburger --- */
@@ -239,4 +239,20 @@ a:hover {
   .nom {
     font-size: 28px;
   }
+}
+.btn-projet {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background-color: #f0a500;
+  color: #000;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-projet:hover {
+  background-color: #d68f00;
+  color: #fff;
 }
