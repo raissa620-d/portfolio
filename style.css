@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+@font-face {
+  font-family: 'Avenue De Madison';
+  src: url('fonts/Avenue De Madison.ttf') format('truetype');
+}
+
+/* --- Général --- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Playfair Display', serif;
+  background-image: url("fond.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #111;
+  color: white;
+  scroll-behavior: smooth;
+}
+
+/* --- Section principale --- */
+.section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+h2 {
+  font-size: 32px;
+  color: #f0a500;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* --- Container présentation --- */
+.container {
+  text-align: center;
+  margin-top: 120px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.photo {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+
+/* --- Logo --- */
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+  height: 150px;
+}
+
+/* --- Menu hamburger --- */
+.menu-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  margin: 6px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+/* --- Menu latéral --- */
+.menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  width: 220px;
+  background-color: rgba(0,0,0,0.9);
+  padding-top: 80px;
+  transition: right 0.4s ease;
+  z-index: 999;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  text-align: center;
+}
+
+.menu ul li {
+  margin: 30px 0;
+}
+
+.menu ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu ul li a:hover {
+  color: #f0a500;
+}
+
+.menu.open {
+  right: 0;
+}
+
+/* --- Projets horizontaux --- */
+.projets-container {
+  display: flex;
+  overflow-x: hidden;
+  gap: 30px;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  animation: defilement 15s linear infinite;
+  will-change: transform;
+}
+
+@keyframes defilement {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-450px * 3)); /* 3 projets * largeur */
+  }
+}
+
+.projet {
+  min-width: 450px;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #f0a500;
+  scroll-snap-align: start;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.projet img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.projet h3 {
+  color: #f0a500;
+  margin: 10px 0 5px;
+  font-size: 20px;
+}
+
+.projet p {
+  font-size: 16px;
+  line-height: 1.4;
+  color: #ddd;
+}
+
+/* --- Liens --- */
+a {
+  text-decoration: none;
+  color: #f0a500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- Style du nom --- */
+.nom {
+  font-family: 'Avenue De Madison', cursive;
+  font-size: 36px;
+  letter-spacing: 1px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .photo {
+    width: 200px;
+    height: 200px;
+  }
+  .projet {
+    min-width: 350px;
+    height: auto;
+  }
+  .projet img {
+    height: 250px;
+  }
+  .container {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 600px) {
+  .menu {
+    width: 100%;
+    padding-top: 60px;
+  }
+  .projets-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+  .projet {
+    min-width: 250px;
+    padding: 15px;
+  }
+  .projet img {
+    height: 180px;
+  }
+  .photo {
+    width: 150px;
+    height: 150px;
+  }
+  .nom {
+    font-size: 28px;
+  }
+}
